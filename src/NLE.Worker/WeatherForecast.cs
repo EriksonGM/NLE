@@ -1,4 +1,4 @@
-namespace NLE.App;
+namespace NLE.Worker;
 
 public class WeatherForecast
 {
