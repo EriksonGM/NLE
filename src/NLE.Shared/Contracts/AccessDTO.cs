@@ -15,6 +15,10 @@ public class AccessDTO
     public long Length { get; set; }
     
     [Required]
+    [MaxLength(100)]
+    public string Url { get; set; }
+    
+    [Required]
     [MaxLength(15)]
     public string RemoteAddress { get; set; }
     
@@ -22,6 +26,8 @@ public class AccessDTO
     [MaxLength(15)]
     public string SentTo { get; set; }
     
+    [Required]
+    [MaxLength(100)]
     public string Client { get; set; }
     
     [Required]
@@ -31,4 +37,7 @@ public class AccessDTO
     [Required]
     [MaxLength(100)]
     public string Host { get; set; }
+    
+    [Required]
+    public string Referer { get; set; }
 }

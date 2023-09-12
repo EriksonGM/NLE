@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using NLE.Data.Entities;
-using HttpMethod = NLE.Data.Entities.HttpMethod;
+using NLE.Domain.Entities;
+using HttpMethod = NLE.Domain.Entities.HttpMethod;
 
 namespace NLE.Data;
 
@@ -35,4 +35,5 @@ public class DataContext : DbContext
     public DbSet<Access> Accesses { get; set; }
     public DbSet<Client> Clients { get; set; }
     public DbSet<HttpMethod> HttpMethods { get; set; }
+    public DbSet<FileLog> FileLogs { get; set; }
 }
