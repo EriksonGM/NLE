@@ -47,6 +47,10 @@ using (var scope = app.Services.CreateScope())
 
     db.Database.Migrate();
 }
+
+if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "Data")))
+    Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "Data"));
+
 app.UseAuthorization();
 
 app.MapControllers();
