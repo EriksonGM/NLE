@@ -1,13 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Reflection;
 
-namespace NLE.Data.Entities;
+namespace NLE.Domain.Entities;
 
 public class Access
 {
     [Key]
-    public Guid Id { get; set; }
+    public Guid AccessId { get; set; }
     
     public DateTime EventDate { get; set; }
     
@@ -42,7 +41,11 @@ public class Access
     
     public int? ClientId { get; set; }
     
+    [Required]
+    public string Referer { get; set; }
     
-    
+    [Required]
+    [MaxLength(100)]
+    public string Url { get; set; }
     
 }

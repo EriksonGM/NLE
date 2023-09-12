@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace NLE.Data.Entities;
+namespace NLE.Domain.Entities;
 
 public class Client
 {
