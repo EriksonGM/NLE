@@ -30,20 +30,19 @@ public class AccessExporterWorker : BackgroundService
             _exporter = scope.ServiceProvider.GetRequiredService<IExporterService>();
         }
 
-        
         while (!stoppingToken.IsCancellationRequested)
         {
             _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
 
             var path = Path.Combine(Environment.CurrentDirectory, "Data");
 
-            foreach (var file in Directory.GetFiles(path, "*_access.log"))
+            var files = Directory.GetFiles(path, "*_access.log");
+            
+            _logger.LogInformation("{Files} files found, starting exportation", files.Length);
+            
+            foreach (var file in files)
             {
                 _logger.LogInformation("Exporting {File}", file);
-
-                //var fs = new FileStream(path, FileMode.Open, FileAccess.Read);
-                
-                //File.ReadLinesAsync()
                 
                 var lines = await File.ReadAllLinesAsync(path, stoppingToken);
 
@@ -106,8 +105,6 @@ public class AccessExporterWorker : BackgroundService
                 _logger.LogInformation("{File} exported successfully", file);
                 
                 await Task.Delay(10000, stoppingToken);
-                
-                
             }
         }
     }
